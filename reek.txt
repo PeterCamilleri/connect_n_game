@@ -1,1 +1,5 @@
-0 total warnings
+lib/connect_n_game/game.rb -- 3 warnings:
+  [29]:ConnectNGame::Game#initialize has unused parameter 'game_ui' (UnusedParameters)
+  [29]:ConnectNGame::Game#initialize has unused parameter 'player_ex' (UnusedParameters)
+  [29]:ConnectNGame::Game#initialize has unused parameter 'player_oh' (UnusedParameters)
+3 total warnings
