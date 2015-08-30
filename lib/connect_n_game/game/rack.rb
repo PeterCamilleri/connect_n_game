@@ -39,8 +39,6 @@ module ConnectNGame
     #<br>Returns
     #* The requested channel (array) or nil for invalid channels.
     def get_channel(channel)
-      return nil unless (1..width).include?(channel)
-
       rack[channel-1]
     end
 
@@ -50,8 +48,6 @@ module ConnectNGame
     #<br>Returns
     #* true if full (or invalid) else false.
     def channel_full?(channel)
-      return true unless (1..width).include?(channel)
-
       rack[channel-1].length >= depth
     end
 
@@ -73,8 +69,8 @@ module ConnectNGame
     #<br>Returns
     #* The contents of the cell or nil
     def get_cell(channel, row)
-      return nil unless (1..width).include?(channel)
-      return nil unless (1..depth).include?(row)
+      return nil unless valid_channel?(channel)
+      return nil unless valid_row?(row)
 
       rack[channel-1][row-1]
     end
@@ -86,10 +82,6 @@ module ConnectNGame
     #<br>Returns
     #* The true or raises GameInvalidMove exception.
     def play_channel(channel, piece)
-      unless (1..width).include?(channel)
-        fail GameInvalidMove, "Invalid channel #{channel}"
-      end
-
       if channel_full?(channel)
         fail GameInvalidMove, "Channel #{channel} is full"
       end
@@ -98,22 +90,24 @@ module ConnectNGame
       piece
     end
 
+    #Get the free row for the specified channel.
+    #<br>Parameters
+    #* channel - The channel number 1 .. width
+    #<br>Returns
+    #* The row number or nil.
+    def channel_to_row(channel)
+      rack[channel-1].length + 1
+    end
 
+    #Is this a valid channel?
+    def valid_channel?(channel)
+      (1..width).include?(channel)
+    end
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    #Is this a valid row?
+    def valid_row?(row)
+      (1..depth).include?(row)
+    end
   end
 
 end

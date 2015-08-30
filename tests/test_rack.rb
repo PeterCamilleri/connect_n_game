@@ -57,10 +57,6 @@ class RackTester < Minitest::Test
       (1..(tr.width)).each do |ch|
         assert_equal(tr.get_channel(ch), [])
       end
-
-      #While we're here, test that it knows when we're out of bounds.
-      assert_equal(tr.get_channel(0), nil)
-      assert_equal(tr.get_channel(tr.width+1), nil)
     end
   end
 
@@ -130,6 +126,12 @@ class RackTester < Minitest::Test
     end
   end
 
+  #Test getting the free row for a channel
+  def test_channel_to_row
+    tr = ConnectNGame::Rack.new(4)
+
+    assert_equal(1, tr.channel_to_row(1))
+  end
 
 
 end
