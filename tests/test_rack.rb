@@ -65,12 +65,15 @@ class RackTester < Minitest::Test
   end
 
   #Test that it knows when a channel is full
-  def test_channel_full
+  def test_channel_and_rack_full
     (4..8).each do |order|
       tr = ConnectNGame::Rack.new(order)
 
       #The channels are being filled.
       (1..tr.depth).each do | _depth |
+
+        refute(tr.rack_full?)
+
         (1..tr.width).each do | channel |
 
           refute(tr.channel_full?(channel))
@@ -83,8 +86,50 @@ class RackTester < Minitest::Test
       (1..tr.width).each do | channel |
         assert(tr.channel_full?(channel))
       end
+
+      assert(tr.rack_full?)
     end
   end
+
+  #Test that we can query individual cells
+  def test_get_cell
+    tr = ConnectNGame::Rack.new(4)
+    assert_equal(tr.get_cell(1,1), nil)
+    assert_equal(tr.get_cell(1,2), nil)
+    assert_equal(tr.get_cell(1,3), nil)
+
+    tr.get_channel(1) << 1
+    assert_equal(tr.get_cell(1,1), 1)
+    assert_equal(tr.get_cell(1,2), nil)
+    assert_equal(tr.get_cell(1,3), nil)
+
+    tr.get_channel(1) << -1
+    assert_equal(tr.get_cell(1,1), 1)
+    assert_equal(tr.get_cell(1,2), -1)
+    assert_equal(tr.get_cell(1,3), nil)
+
+    tr.get_channel(1) << 1
+    assert_equal(tr.get_cell(1,1), 1)
+    assert_equal(tr.get_cell(1,2), -1)
+    assert_equal(tr.get_cell(1,3), 1)
+  end
+
+  #Test that we can play a channel.
+  def test_play_channel
+    tr = ConnectNGame::Rack.new(4)
+
+    assert_equal(1, tr.play_channel(1, 1))
+    assert_equal(1, tr.play_channel(1, 1))
+    assert_equal(1, tr.play_channel(1, 1))
+    assert_equal(1, tr.play_channel(1, 1))
+    assert_equal(1, tr.play_channel(1, 1))
+    assert_equal(1, tr.play_channel(1, 1))
+
+    assert_raises(ConnectNGame::GameInvalidMove) do
+      tr.play_channel(1, 1)
+    end
+  end
+
 
 
 end

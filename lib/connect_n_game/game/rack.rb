@@ -55,6 +55,65 @@ module ConnectNGame
       rack[channel-1].length >= depth
     end
 
+    #Is the rack full?
+    #<br>Returns
+    #* true if full (or invalid) else false.
+    def rack_full?
+      rack.each do |channel|
+        return false if channel.length < depth
+      end
+
+      true
+    end
+
+    #Get the specified cell.
+    #<br>Parameters
+    #* channel - The channel number 1 .. width
+    #* row - The row number 1 .. depth
+    #<br>Returns
+    #* The contents of the cell or nil
+    def get_cell(channel, row)
+      return nil unless (1..width).include?(channel)
+      return nil unless (1..depth).include?(row)
+
+      rack[channel-1][row-1]
+    end
+
+    #Play a specified channel.
+    #<br>Parameters
+    #* channel - The channel number 1 .. width
+    #* piece - The piece to be played.
+    #<br>Returns
+    #* The true or raises GameInvalidMove exception.
+    def play_channel(channel, piece)
+      unless (1..width).include?(channel)
+        fail GameInvalidMove, "Invalid channel #{channel}"
+      end
+
+      if channel_full?(channel)
+        fail GameInvalidMove, "Channel #{channel} is full"
+      end
+
+      rack[channel-1] << piece
+      piece
+    end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   end
 
 end
