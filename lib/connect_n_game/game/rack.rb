@@ -121,7 +121,7 @@ module ConnectNGame
       result = 0
 
       while result < width
-        channel,row = channel+dx, row+dy
+        channel, row = channel+dx, row+dy
 
         return result unless piece == get_cell(channel, row)
 

@@ -156,20 +156,20 @@ class RackTester < Minitest::Test
     tr = ConnectNGame::Rack.new(4)
 
     assert_equal(1, tr.score_move(3,1))
-
     tr.play_channel(3,1)
-    assert_equal(2, tr.score_move(3,1))
 
+    assert_equal(2, tr.score_move(3,1))
     tr.play_channel(4,1)
-    assert_equal(2, tr.score_move(3,1))
 
+    assert_equal(2, tr.score_move(4,1))
     tr.play_channel(4,1)
-    assert_equal(2, tr.score_move(3,1))
 
+    assert_equal(2, tr.score_move(3,1))
     tr.play_channel(3,1)
+
     assert_equal(3, tr.score_move(3,1))
-
     tr.play_channel(3,1)
+
     assert_equal(4, tr.score_move(3,1))
 
     #It should not hang either!
