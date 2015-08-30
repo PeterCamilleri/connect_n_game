@@ -1,6 +1,5 @@
 # coding: utf-8
 
-#* player.rb - The abstract Player class of the connect_n_game.
 module ConnectNGame
 
   #The class of game racks. That is a matrix of cells
@@ -20,7 +19,8 @@ module ConnectNGame
 
     #Create a rack of the appropriate order.
     #<br>Parameters
-    #* order - The order of the game, that is the winning number in a row.
+    #* order - The order of the game, that is the winning
+    #  number of pieces in a row.
     def initialize(order)
       unless (4..8).include?(order)
         fail "Invalid game dimension #{order} not (4 .. 8)"
@@ -46,7 +46,7 @@ module ConnectNGame
     #<br>Parameters
     #* channel - The channel number 1 .. width
     #<br>Returns
-    #* true if full (or invalid) else false.
+    #* true if full else false.
     def channel_full?(channel)
       rack[channel-1].length >= depth
     end
@@ -80,7 +80,7 @@ module ConnectNGame
     #* channel - The channel number 1 .. width
     #* piece - The piece to be played.
     #<br>Returns
-    #* The true or raises GameInvalidMove exception.
+    #* The true or raises \GameInvalidMove exception.
     def play_channel(channel, piece)
       if channel_full?(channel)
         fail GameInvalidMove, "Channel #{channel} is full"
@@ -130,7 +130,6 @@ module ConnectNGame
 
       fail "Looping error"
     end
-
 
     #Get the free row for the specified channel.
     #<br>Parameters

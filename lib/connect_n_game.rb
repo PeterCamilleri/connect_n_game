@@ -8,8 +8,7 @@ require_relative 'connect_n_game/version'
 
 require_relative 'cli/cli'
 
-# The Connect N Game main module
-#* connect_n_game.rb - The root source file of this program/game/gem.
+#The Connect N \Game main module
 module ConnectNGame
   #WIP
 end

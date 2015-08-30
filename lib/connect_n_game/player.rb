@@ -1,6 +1,5 @@
 # coding: utf-8
 
-#* player.rb - The abstract Player class of the connect_n_game.
 module ConnectNGame
 
   #The abstract Player class of the connect_n_game.
