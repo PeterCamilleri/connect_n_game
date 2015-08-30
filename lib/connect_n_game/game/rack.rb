@@ -90,13 +90,55 @@ module ConnectNGame
       piece
     end
 
+    #Determine the score obtained for moving to a specified channel
+    #<br>Parameters
+    #* channel - The channel number 1 .. width
+    #* piece - The piece to be played.
+    #<br>Returns
+    #* The score for that play 0 .. n
+    def score_move(channel, piece)
+      return 0 if channel_full?(channel)
+
+      row = channel_to_row(channel)
+
+      ([[0,1], [1,1], [1,0], [1,-1]].map do |delta|
+        dx, dy = delta
+        count_pieces(channel, row,  dx,  dy, piece) + 1 +
+        count_pieces(channel, row, -dx, -dy, piece)
+      end).max
+    end
+
+    #Count the pieces along the designated path.
+    #<br>Parameters
+    #* channel - The starting channel
+    #* row - The starting row
+    #* dx - The channel step value
+    #* dy - The row step value
+    #* piece - The piece we are looking for.
+    #<br>Returns
+    #* The score for that play 0 .. n
+    def count_pieces(channel, row, dx, dy, piece)
+      result = 0
+
+      while result < width
+        channel,row = channel+dx, row+dy
+
+        return result unless piece == get_cell(channel, row)
+
+        result += 1
+      end
+
+      fail "Looping error"
+    end
+
+
     #Get the free row for the specified channel.
     #<br>Parameters
     #* channel - The channel number 1 .. width
     #<br>Returns
     #* The row number or nil.
     def channel_to_row(channel)
-      rack[channel-1].length + 1
+      channel_full?(channel) ? nil : rack[channel-1].length + 1
     end
 
     #Is this a valid channel?

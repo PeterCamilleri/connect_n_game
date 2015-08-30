@@ -131,7 +131,50 @@ class RackTester < Minitest::Test
     tr = ConnectNGame::Rack.new(4)
 
     assert_equal(1, tr.channel_to_row(1))
+
+    tr.play_channel(1,1)
+    assert_equal(2, tr.channel_to_row(1))
+
+    tr.play_channel(1,1)
+    assert_equal(3, tr.channel_to_row(1))
+
+    tr.play_channel(1,1)
+    assert_equal(4, tr.channel_to_row(1))
+
+    tr.play_channel(1,1)
+    assert_equal(5, tr.channel_to_row(1))
+
+    tr.play_channel(1,1)
+    assert_equal(6, tr.channel_to_row(1))
+
+    tr.play_channel(1,1)
+    assert_equal(nil, tr.channel_to_row(1))
   end
 
+  #Test that we can count cells around a position.
+  def test_score_move
+    tr = ConnectNGame::Rack.new(4)
+
+    assert_equal(1, tr.score_move(3,1))
+
+    tr.play_channel(3,1)
+    assert_equal(2, tr.score_move(3,1))
+
+    tr.play_channel(4,1)
+    assert_equal(2, tr.score_move(3,1))
+
+    tr.play_channel(4,1)
+    assert_equal(2, tr.score_move(3,1))
+
+    tr.play_channel(3,1)
+    assert_equal(3, tr.score_move(3,1))
+
+    tr.play_channel(3,1)
+    assert_equal(4, tr.score_move(3,1))
+
+    #It should not hang either!
+    assert_raises { tr.score_move(3,nil) }
+
+  end
 
 end

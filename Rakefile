@@ -30,11 +30,6 @@ Rake::TestTask.new do |t|
   t.verbose = false
 end
 
-desc "Run a scan for smelly code!"
-task :reek do |t|
-  `reek --no-color lib > reek.txt`
-end
-
 desc "Fire up an IRB session with the game preloaded."
 task :console do
   require 'irb'
