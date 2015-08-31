@@ -6,8 +6,8 @@ module ConnectNGame
   class JustRandom < Player
 
     #Build the player
-    def initialize
-      super("Random", "Make random moves", :silicon)
+    def initialize(name = "Random")
+      super(name, "Moves randomly.", :silicon)
     end
 
   end
