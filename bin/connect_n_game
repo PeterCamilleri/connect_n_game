@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 # coding: utf-8
 
+#Run the Connect N Game from the command line.
+
 unless defined?(ConnectNGame)
   begin
     require 'connect_n_game'

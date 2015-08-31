@@ -17,34 +17,34 @@ class RackTester < Minitest::Test
     assert_raises { ConnectNGame::Rack.new(3) }
 
     tr = ConnectNGame::Rack.new(4)
-    assert_equal(tr.order, 4)
-    assert_equal(tr.depth, 6)
-    assert_equal(tr.width, 7)
-    assert_equal(tr.rack, [[],[],[],[],[],[],[]])
+    assert_equal(4, tr.order)
+    assert_equal(6, tr.depth)
+    assert_equal(7, tr.width)
+    assert_equal([[],[],[],[],[],[],[]], tr.rack)
 
     tr = ConnectNGame::Rack.new(5)
-    assert_equal(tr.order, 5)
-    assert_equal(tr.depth, 7)
-    assert_equal(tr.width, 9)
-    assert_equal(tr.rack, [[],[],[],[],[],[],[],[],[]])
+    assert_equal(5, tr.order)
+    assert_equal(7, tr.depth)
+    assert_equal(9, tr.width)
+    assert_equal([[],[],[],[],[],[],[],[],[]], tr.rack)
 
     tr = ConnectNGame::Rack.new(6)
-    assert_equal(tr.order, 6)
-    assert_equal(tr.depth, 9)
-    assert_equal(tr.width, 11)
-    assert_equal(tr.rack, [[],[],[],[],[],[],[],[],[],[],[]])
+    assert_equal(6, tr.order)
+    assert_equal(9, tr.depth)
+    assert_equal(11, tr.width)
+    assert_equal([[],[],[],[],[],[],[],[],[],[],[]], tr.rack)
 
     tr = ConnectNGame::Rack.new(7)
-    assert_equal(tr.order, 7)
-    assert_equal(tr.depth, 10)
-    assert_equal(tr.width, 11)
-    assert_equal(tr.rack, [[],[],[],[],[],[],[],[],[],[],[]])
+    assert_equal(7, tr.order)
+    assert_equal(10, tr.depth)
+    assert_equal(11, tr.width)
+    assert_equal([[],[],[],[],[],[],[],[],[],[],[]], tr.rack)
 
     tr = ConnectNGame::Rack.new(8)
-    assert_equal(tr.order, 8)
-    assert_equal(tr.depth, 12)
-    assert_equal(tr.width, 13)
-    assert_equal(tr.rack, [[],[],[],[],[],[],[],[],[],[],[],[],[]])
+    assert_equal(8, tr.order)
+    assert_equal(12, tr.depth)
+    assert_equal(13, tr.width)
+    assert_equal([[],[],[],[],[],[],[],[],[],[],[],[],[]], tr.rack)
 
     assert_raises { ConnectNGame::Rack.new(9) }
   end
@@ -55,7 +55,7 @@ class RackTester < Minitest::Test
       tr = ConnectNGame::Rack.new(order)
 
       (1..(tr.width)).each do |ch|
-        assert_equal(tr.get_channel(ch), [])
+        assert_equal([], tr.get_channel(ch))
       end
     end
   end
@@ -90,24 +90,24 @@ class RackTester < Minitest::Test
   #Test that we can query individual cells
   def test_get_cell
     tr = ConnectNGame::Rack.new(4)
-    assert_equal(tr.get_cell(1,1), nil)
-    assert_equal(tr.get_cell(1,2), nil)
-    assert_equal(tr.get_cell(1,3), nil)
+    assert_equal(nil, tr.get_cell(1,1))
+    assert_equal(nil, tr.get_cell(1,2))
+    assert_equal(nil, tr.get_cell(1,3))
 
     tr.get_channel(1) << 1
-    assert_equal(tr.get_cell(1,1), 1)
-    assert_equal(tr.get_cell(1,2), nil)
-    assert_equal(tr.get_cell(1,3), nil)
+    assert_equal(1, tr.get_cell(1,1))
+    assert_equal(nil, tr.get_cell(1,2))
+    assert_equal(nil, tr.get_cell(1,3))
 
     tr.get_channel(1) << -1
-    assert_equal(tr.get_cell(1,1), 1)
-    assert_equal(tr.get_cell(1,2), -1)
-    assert_equal(tr.get_cell(1,3), nil)
+    assert_equal(1, tr.get_cell(1,1))
+    assert_equal(-1, tr.get_cell(1,2))
+    assert_equal(nil, tr.get_cell(1,3))
 
     tr.get_channel(1) << 1
-    assert_equal(tr.get_cell(1,1), 1)
-    assert_equal(tr.get_cell(1,2), -1)
-    assert_equal(tr.get_cell(1,3), 1)
+    assert_equal(1, tr.get_cell(1,1))
+    assert_equal(-1, tr.get_cell(1,2))
+    assert_equal(1, tr.get_cell(1,3))
   end
 
   #Test that we can play a channel.
@@ -154,27 +154,55 @@ class RackTester < Minitest::Test
   #Test that we can count cells around a position.
   def test_score_move
     tr = ConnectNGame::Rack.new(4)
+    #.......
+    #.......
+    #.......
+    #.......
 
     assert_equal(1, tr.score_move(3,1))
     tr.play_channel(3,1)
-
-    assert_equal(2, tr.score_move(3,1))
-    tr.play_channel(4,1)
+    #.......
+    #.......
+    #.......
+    #..X....
 
     assert_equal(2, tr.score_move(4,1))
     tr.play_channel(4,1)
+    #.......
+    #.......
+    #.......
+    #..XX...
+
+    assert_equal(2, tr.score_move(4,1))
+    tr.play_channel(4,1)
+    #.......
+    #.......
+    #...X...
+    #..XX...
 
     assert_equal(2, tr.score_move(3,1))
     tr.play_channel(3,1)
+    #.......
+    #.......
+    #..XX...
+    #..XX...
 
     assert_equal(3, tr.score_move(3,1))
     tr.play_channel(3,1)
+    #.......
+    #..X....
+    #..XX...
+    #..XX...
 
     assert_equal(4, tr.score_move(3,1))
+    tr.play_channel(3,1)
+    #..X....
+    #..X....
+    #..XX...
+    #..XX...
 
     #It should not hang either!
-    assert_raises { tr.score_move(3,nil) }
-
+    assert_raises { tr.score_move(3, nil) }
   end
 
 end

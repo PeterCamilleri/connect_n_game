@@ -8,6 +8,13 @@ module ConnectNGame
   #  all the sorts of players, both human and automaton. This is where moves
   #  are generated and victory celebrated and defeated mourned.
   class Player
+    #Set up class instance data.
+    @players = []
+
+    class << self
+      #The list of available players.
+      attr_reader :players
+    end
 
     # The name of this player.
     attr_reader :name
@@ -25,6 +32,18 @@ module ConnectNGame
        @name, @description, @type = name, description, type
     end
 
+    #Implement comparisons
+    def <=>(other)
+      name <=> other.name
+    end
+
+
   end
 
 end
+
+#Load up the players!
+Dir[File.dirname(__FILE__) + '/players/*.rb'].each {|file| require file }
+
+#Sort them
+ConnectNGame::Player.players.sort!

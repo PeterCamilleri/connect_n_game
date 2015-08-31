@@ -12,4 +12,10 @@ class GameTester < Minitest::Test
     assert_equal(ConnectNGame::VERSION.class, String)
   end
 
+  #Test that it knows whose turn it is.
+  def test_whose_turn_is_it
+
+
+
+  end
 end
