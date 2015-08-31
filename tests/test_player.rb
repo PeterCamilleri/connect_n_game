@@ -30,7 +30,7 @@ class PlayerTester < Minitest::Test
     aop << ConnectNGame::Player.new("Apple", "Cooler",  :silicon)
     aop << ConnectNGame::Player.new("Ed",    "Coolest", :carbon)
 
-    aop.sort!
+    aop.sort! {|a,b| a.name <=> b.name }
 
     assert_equal("Apple", aop[0].name)
     assert_equal("Ed",    aop[1].name)

@@ -32,12 +32,6 @@ module ConnectNGame
        @name, @description, @type = name, description, type
     end
 
-    #Implement comparisons
-    def <=>(other)
-      name <=> other.name
-    end
-
-
   end
 
 end
@@ -46,4 +40,4 @@ end
 Dir[File.dirname(__FILE__) + '/players/*.rb'].each {|file| require file }
 
 #Sort them
-ConnectNGame::Player.players.sort!
+ConnectNGame::Player.players.sort! {|a,b| a.name <=> b.name }
