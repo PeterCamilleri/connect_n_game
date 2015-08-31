@@ -17,6 +17,18 @@ module ConnectNGame
     #The \game playing surface
     attr_reader :rack
 
+    #The user interface
+    attr_reader :ui
+
+    #Whose playing?
+    attr_reader :players
+
+    #The play log
+    attr_reader :log
+
+    #The current player
+    attr_reader :current
+
     #Create an instance of a \game object.
     #<br>Parameters
     #* player_ex - The player who moves first
@@ -26,9 +38,16 @@ module ConnectNGame
     #<br>Returns
     #* An instance of a \Game.
     def initialize(player_ex, player_oh, game_ui, game_size=4)
-      @rack = Rack.new(game_size)
+      #Set up player related data.
+      @players = { 1 => player_ex, -1 => player_oh }
+      @current = 1
 
-      #WIP
+      #Set up the user interface
+      @ui = game_ui
+
+      #Set up game play data.
+      @rack = Rack.new(game_size)
+      @log  = []
     end
 
   end
