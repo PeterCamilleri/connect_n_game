@@ -80,14 +80,15 @@ module ConnectNGame
     #* channel - The channel number 1 .. width
     #* piece - The piece to be played.
     #<br>Returns
-    #* The true or raises \GameInvalidMove exception.
+    #* The score of the move or raises \GameInvalidMove exception.
     def play_channel(channel, piece)
       if channel_full?(channel)
         fail GameInvalidMove, "Channel #{channel} is full"
       end
 
+      score = score_move(channel, piece)
       rack[channel-1] << piece
-      piece
+      score
     end
 
     #Determine the score obtained for moving to a specified channel

@@ -28,8 +28,21 @@ module ConnectNGame
     #Do the common player setup
     def initialize(name, description, type)
        fail "Invalid type #{type}" unless [:carbon, :silicon].include?(type)
-
        @name, @description, @type = name, description, type
+    end
+
+    #Do the common game preparation.
+    def game_initialize
+    end
+
+    #The thrill of victory.
+    def winners_comments
+      "#{name} says 'It was pure skill!'"
+    end
+
+    #The agony of defeat
+    def losers_comments
+      "#{name} says 'No comment.'"
     end
 
   end
@@ -42,4 +55,4 @@ require_relative 'human'
 Dir[File.dirname(__FILE__) + '/players/*.rb'].each {|file| require file }
 
 #Sort them
-ConnectNGame::Player.players.sort! {|a,b| a.name <=> b.name }
+ConnectNGame::Player.players.sort! {|a,b| a.name.casecmp(b.name) }

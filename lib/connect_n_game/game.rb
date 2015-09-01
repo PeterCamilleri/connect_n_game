@@ -33,17 +33,13 @@ module ConnectNGame
     #<br>Parameters
     #* player_ex - The player who moves first
     #* payer_oh - The player who moves next
-    #* game_ui - The user interface of the game.
     #* game_size - The size of the game connection (4..8). Default: 4
     #<br>Returns
     #* An instance of a \Game.
-    def initialize(player_ex, player_oh, game_ui, game_size=4)
+    def initialize(player_ex, player_oh, game_size=4)
       #Set up player related data.
-      @players = { 1 => player_ex, -1 => player_oh }
+      @players = { 1 => player_ex, 2 => player_oh }
       @current = 1
-
-      #Set up the user interface
-      @ui = game_ui
 
       #Set up game play data.
       @rack = Rack.new(game_size)

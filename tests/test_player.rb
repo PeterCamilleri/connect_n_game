@@ -27,12 +27,12 @@ class PlayerTester < Minitest::Test
   def test_that_it_is_sortable
     aop = []
     aop << ConnectNGame::Player.new("Ted",   "Cool",    :carbon)
-    aop << ConnectNGame::Player.new("Apple", "Cooler",  :silicon)
+    aop << ConnectNGame::Player.new("apple", "Cooler",  :silicon)
     aop << ConnectNGame::Player.new("Ed",    "Coolest", :carbon)
 
-    aop.sort! {|a,b| a.name <=> b.name }
+    aop.sort! {|a,b| a.name.casecmp(b.name) }
 
-    assert_equal("Apple", aop[0].name)
+    assert_equal("apple", aop[0].name)
     assert_equal("Ed",    aop[1].name)
     assert_equal("Ted",   aop[2].name)
   end
