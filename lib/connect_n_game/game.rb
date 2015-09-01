@@ -46,6 +46,32 @@ module ConnectNGame
       @log  = []
     end
 
+    #What player moves next?
+    #<br>Returns
+    #* An instance of a \Player.
+    def current_player
+      players[current]
+    end
+
+    #Play the next move!
+    #<br>Returns
+    #* :victory, :stalemate, :continue, or :invalid_move
+    def next_move
+      channel = current_player.make_move(self, current)
+      score = rack.play_channel(channel, current)
+
+      if score >= rack.order
+        :victory
+      elsif rack.rack_full?
+        :stalemate
+      else
+        @current = (@current % 2) + 1
+        :continue
+      end
+    rescue
+      :invalid_move
+    end
+
   end
 
 end

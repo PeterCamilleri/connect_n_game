@@ -18,6 +18,8 @@ class PlayerTester < Minitest::Test
     assert_equal("Ted", atp.name)
     assert_equal("Cool", atp.description)
     assert_equal(:carbon, atp.type)
+    assert(atp.carbon?)
+    refute(atp.silicon?)
 
     #It should reject invalid player types.
     assert_raises { ConnectNGame::Player.new("Ted", "Cool", :germanium) }
@@ -33,8 +35,16 @@ class PlayerTester < Minitest::Test
     aop.sort! {|a,b| a.name.casecmp(b.name) }
 
     assert_equal("apple", aop[0].name)
+    assert(aop[0].silicon?)
+    refute(aop[0].carbon?)
+
     assert_equal("Ed",    aop[1].name)
+    refute(aop[1].silicon?)
+    assert(aop[1].carbon?)
+
     assert_equal("Ted",   aop[2].name)
+    refute(aop[2].silicon?)
+    assert(aop[2].carbon?)
   end
 
   #Test that it loads up available players.
