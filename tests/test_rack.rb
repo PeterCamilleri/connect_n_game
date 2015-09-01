@@ -99,14 +99,14 @@ class RackTester < Minitest::Test
     assert_equal(nil, tr.get_cell(1,2))
     assert_equal(nil, tr.get_cell(1,3))
 
-    tr.get_channel(1) << -1
+    tr.get_channel(1) << 2
     assert_equal(1, tr.get_cell(1,1))
-    assert_equal(-1, tr.get_cell(1,2))
+    assert_equal(2, tr.get_cell(1,2))
     assert_equal(nil, tr.get_cell(1,3))
 
     tr.get_channel(1) << 1
     assert_equal(1, tr.get_cell(1,1))
-    assert_equal(-1, tr.get_cell(1,2))
+    assert_equal(2, tr.get_cell(1,2))
     assert_equal(1, tr.get_cell(1,3))
   end
 
