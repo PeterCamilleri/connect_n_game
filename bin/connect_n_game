@@ -13,4 +13,4 @@ end
 
 require_relative '../lib/cli/cli'
 
-ConnectNGame::main
+ConnectNGame::CLI.new.main
