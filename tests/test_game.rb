@@ -17,7 +17,7 @@ class GameTester < Minitest::Test
     pl1 = ConnectNGame::Player.new("A", "OK",   :silicon)
     pl2 = ConnectNGame::Player.new("B", "GOOD", :carbon)
 
-    game = ConnectNGame::Game.new(pl1, pl2)
+    game = ConnectNGame::Game.new(pl1, pl2).game_initialize
 
     assert_equal(4, game.rack.order)
     assert_equal(pl1, game.current_player)

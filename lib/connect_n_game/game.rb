@@ -37,13 +37,9 @@ module ConnectNGame
     #<br>Returns
     #* An instance of a \Game.
     def initialize(player_ex, player_oh, game_size=4)
+      @game_size = game_size
       #Set up player related data.
       @players = { 1 => player_ex, 2 => player_oh }
-      @current = 1
-
-      #Set up game play data.
-      @rack = Rack.new(game_size)
-      @log  = []
     end
 
     #What player moves next?
@@ -53,12 +49,26 @@ module ConnectNGame
       players[current]
     end
 
+    #Get ready to start a game
+    def game_initialize
+      #Set up game play data.
+      @current = 1
+      @rack = Rack.new(@game_size)
+      @log  = []
+
+      #Get the players ready.
+      @players.each {|_idx, player| player.game_initialize }
+
+      self
+    end
+
     #Play the next move!
     #<br>Returns
     #* :victory, :stalemate, :continue, or :invalid_move
     def next_move
       channel = current_player.make_move(self, current)
       score = rack.play_channel(channel, current)
+      @log << channel
 
       if score >= rack.order
         :victory
