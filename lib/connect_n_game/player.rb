@@ -36,6 +36,8 @@ module ConnectNGame
 
 end
 
+require_relative 'human'
+
 #Load up the players!
 Dir[File.dirname(__FILE__) + '/players/*.rb'].each {|file| require file }
 
