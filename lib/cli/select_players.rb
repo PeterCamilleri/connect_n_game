@@ -32,7 +32,7 @@ module ConnectNGame
     #Display the available players
     def show_players
       puts
-      puts "Supported players: "
+      puts "Player Selection: "
 
       width = (Player.players.map do |player|
         player.name.length
@@ -41,8 +41,6 @@ module ConnectNGame
       Player.players.each do |player|
         puts "  #{player.name.ljust(width+1)}  #{player.description}"
       end
-
-      puts
     end
 
     #Find the selected player.

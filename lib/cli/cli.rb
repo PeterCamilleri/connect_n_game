@@ -12,17 +12,24 @@ module ConnectNGame
     #Set up the command line interface
     def initialize
       @players = []
+      @order = 4
     end
 
     #The starting point for an interactive, command-line-driven session
     #of the Connect N Game!
     def main
-      puts "Welcome to the Connect N Command Line Interface."
-      puts "Game Version: #{VERSION}."
-      puts
-
+      welcome
       process_cmd_line
       top_up_players
+
+    rescue Interrupt
+      puts
+    end
+
+    #The welcome message.
+    def welcome
+      puts "Welcome to the Connect N Command Line Interface."
+      puts "This is game version: #{VERSION}."
     end
 
   end

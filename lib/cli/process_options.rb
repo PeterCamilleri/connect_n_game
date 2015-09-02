@@ -36,7 +36,7 @@ module ConnectNGame
 
     #Display the help message.
     def show_help
-
+      puts
       puts "Usage info: connect_n_game <options>"
       puts
       puts "--help, -h, -?      -- Display this message and quit."
