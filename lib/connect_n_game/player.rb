@@ -47,10 +47,6 @@ module ConnectNGame
       type == :carbon
     end
 
-    #Do the common game preparation.
-    def game_initialize
-    end
-
     #Make a move. This is dummy code for testing.
     #<br>Parameters
     #* _game - the game being played - not used here.
