@@ -56,9 +56,6 @@ module ConnectNGame
       @rack = Rack.new(@game_size)
       @log  = []
 
-      #Get the players ready.
-      @players.each {|_idx, player| player.game_initialize }
-
       self
     end
 

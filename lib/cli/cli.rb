@@ -4,6 +4,9 @@
 require_relative 'process_options'
 require_relative 'select_players'
 
+#Monkey patching the CLI UI into the game.
+require_relative 'rack'
+
 module ConnectNGame
 
   #The Connect N Command Line Interface class.
@@ -22,8 +25,15 @@ module ConnectNGame
       process_cmd_line
       top_up_players
 
+      play_game
+
     rescue Interrupt
       puts
+    end
+
+    #Play the game
+    def play_game
+
     end
 
     #The welcome message.

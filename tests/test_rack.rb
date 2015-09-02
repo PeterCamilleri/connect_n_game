@@ -21,35 +21,49 @@ class RackTester < Minitest::Test
     assert_equal(6, tr.depth)
     assert_equal(7, tr.width)
     assert_equal([[],[],[],[],[],[],[]], tr.rack)
-    assert_equal(%w(?? A B C D E F G), tr.channel_names)
+    assert_equal(%w(A B C D E F G), tr.channel_names)
+    assert_equal([0.0078125, 0.03125, 0.125, 0.5, 0.25, 0.0625,
+                  0.015625], tr.weights)
 
     tr = ConnectNGame::Rack.new(5)
     assert_equal(5, tr.order)
     assert_equal(7, tr.depth)
     assert_equal(9, tr.width)
     assert_equal([[],[],[],[],[],[],[],[],[]], tr.rack)
-    assert_equal(%w(?? A B C D E F G H I), tr.channel_names)
+    assert_equal(%w(A B C D E F G H I), tr.channel_names)
+    assert_equal([0.001953125, 0.0078125, 0.03125, 0.125, 0.5,
+                  0.25, 0.0625, 0.015625, 0.00390625], tr.weights)
 
     tr = ConnectNGame::Rack.new(6)
     assert_equal(6, tr.order)
     assert_equal(9, tr.depth)
     assert_equal(11, tr.width)
     assert_equal([[],[],[],[],[],[],[],[],[],[],[]], tr.rack)
-    assert_equal(%w(?? A B C D E F G H I J K), tr.channel_names)
+    assert_equal(%w(A B C D E F G H I J K), tr.channel_names)
+    assert_equal([0.00048828125, 0.001953125, 0.0078125, 0.03125,
+                  0.125, 0.5, 0.25, 0.0625, 0.015625, 0.00390625,
+                  0.0009765625], tr.weights)
 
     tr = ConnectNGame::Rack.new(7)
     assert_equal(7, tr.order)
     assert_equal(10, tr.depth)
     assert_equal(11, tr.width)
     assert_equal([[],[],[],[],[],[],[],[],[],[],[]], tr.rack)
-    assert_equal(%w(?? A B C D E F G H I J K), tr.channel_names)
+    assert_equal(%w(A B C D E F G H I J K), tr.channel_names)
+    assert_equal([0.00048828125, 0.001953125, 0.0078125, 0.03125,
+                  0.125, 0.5, 0.25, 0.0625, 0.015625, 0.00390625,
+                  0.0009765625], tr.weights)
 
     tr = ConnectNGame::Rack.new(8)
     assert_equal(8, tr.order)
     assert_equal(12, tr.depth)
     assert_equal(13, tr.width)
     assert_equal([[],[],[],[],[],[],[],[],[],[],[],[],[]], tr.rack)
-    assert_equal(%w(?? A B C D E F G H I J K L M), tr.channel_names)
+    assert_equal(%w(A B C D E F G H I J K L M), tr.channel_names)
+    assert_equal([0.0001220703125, 0.00048828125, 0.001953125,
+                  0.0078125, 0.03125, 0.125, 0.5, 0.25, 0.0625,
+                  0.015625, 0.00390625, 0.0009765625,
+                  0.000244140625], tr.weights)
 
     assert_raises { ConnectNGame::Rack.new(9) }
   end

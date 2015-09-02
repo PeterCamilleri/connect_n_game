@@ -17,6 +17,9 @@ module ConnectNGame
     #The raw playable area.
     attr_reader :rack
 
+    #The column weight values.
+    attr_reader :weights
+
     #Create a rack of the appropriate order.
     #<br>Parameters
     #* order - The order of the game, that is the winning
@@ -30,12 +33,22 @@ module ConnectNGame
       @depth = @order + (order >> 1)
       @width = @depth + (@depth.odd? ? 2 : 1)
 
+      @weights = [0.5]
+      weight = 4
+
+      (@width/2).times do
+        @weights << 1.0/weight
+        weight *= 2
+        @weights.insert(0, 1.0/weight)
+        weight *= 2
+      end
+
       @rack = Array.new(@width) { [ ] }
     end
 
     #Get an array of labels for the current channels.
     def channel_names
-      %w(?? A B C D E F G H I J K L M).first(width+1)
+      %w(A B C D E F G H I J K L M).first(width)
     end
 
     #Get the required play channel
@@ -53,7 +66,7 @@ module ConnectNGame
     #<br>Returns
     #* true if full else false.
     def channel_full?(channel)
-      rack[channel-1].length >= depth
+      get_channel(channel).length >= depth
     end
 
     #Is the rack full?
