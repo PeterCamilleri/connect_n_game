@@ -33,6 +33,11 @@ module ConnectNGame
       @rack = Array.new(@width) { [ ] }
     end
 
+    #Get an array of labels for the current channels.
+    def channel_names
+      %w(?? A B C D E F G H I J K L M).first(width+1)
+    end
+
     #Get the required play channel
     #<br>Parameters
     #* channel - The channel number 1 .. width

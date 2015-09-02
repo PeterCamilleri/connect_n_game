@@ -21,30 +21,35 @@ class RackTester < Minitest::Test
     assert_equal(6, tr.depth)
     assert_equal(7, tr.width)
     assert_equal([[],[],[],[],[],[],[]], tr.rack)
+    assert_equal(%w(?? A B C D E F G), tr.channel_names)
 
     tr = ConnectNGame::Rack.new(5)
     assert_equal(5, tr.order)
     assert_equal(7, tr.depth)
     assert_equal(9, tr.width)
     assert_equal([[],[],[],[],[],[],[],[],[]], tr.rack)
+    assert_equal(%w(?? A B C D E F G H I), tr.channel_names)
 
     tr = ConnectNGame::Rack.new(6)
     assert_equal(6, tr.order)
     assert_equal(9, tr.depth)
     assert_equal(11, tr.width)
     assert_equal([[],[],[],[],[],[],[],[],[],[],[]], tr.rack)
+    assert_equal(%w(?? A B C D E F G H I J K), tr.channel_names)
 
     tr = ConnectNGame::Rack.new(7)
     assert_equal(7, tr.order)
     assert_equal(10, tr.depth)
     assert_equal(11, tr.width)
     assert_equal([[],[],[],[],[],[],[],[],[],[],[]], tr.rack)
+    assert_equal(%w(?? A B C D E F G H I J K), tr.channel_names)
 
     tr = ConnectNGame::Rack.new(8)
     assert_equal(8, tr.order)
     assert_equal(12, tr.depth)
     assert_equal(13, tr.width)
     assert_equal([[],[],[],[],[],[],[],[],[],[],[],[],[]], tr.rack)
+    assert_equal(%w(?? A B C D E F G H I J K L M), tr.channel_names)
 
     assert_raises { ConnectNGame::Rack.new(9) }
   end
