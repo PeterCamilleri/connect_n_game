@@ -121,9 +121,10 @@ class RackTester < Minitest::Test
     assert_equal(5, tr.play_channel(1, 1))
     assert_equal(6, tr.play_channel(1, 1))
 
-    assert_raises(ConnectNGame::GameInvalidMove) do
-      tr.play_channel(1, 1)
-    end
+    #Playing a full channel has no effect or score.
+    assert_equal(6, tr.get_channel(1).length)
+    assert_equal(0, tr.play_channel(1, 1))
+    assert_equal(6, tr.get_channel(1).length)
   end
 
   #Test getting the free row for a channel
