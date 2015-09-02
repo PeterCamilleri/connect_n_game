@@ -17,6 +17,9 @@ module ConnectNGame
     #The raw playable area.
     attr_reader :rack
 
+    #The names of the channels
+    attr_reader :channel_names
+
     #The column weight values.
     attr_reader :weights
 
@@ -43,12 +46,9 @@ module ConnectNGame
         weight *= 2
       end
 
-      @rack = Array.new(@width) { [ ] }
-    end
+      @channel_names = %w(A B C D E F G H I J K L M).first(width)
 
-    #Get an array of labels for the current channels.
-    def channel_names
-      %w(A B C D E F G H I J K L M).first(width)
+      @rack = Array.new(@width) { [ ] }
     end
 
     #Get the required play channel
@@ -112,7 +112,7 @@ module ConnectNGame
     #<br>Returns
     #* The score for that play 0 .. n
     def score_move(channel, piece)
-      return 0 if channel_full?(channel)
+      return -1 if channel_full?(channel)
 
       row = channel_to_row(channel)
 

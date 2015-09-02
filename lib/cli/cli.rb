@@ -5,7 +5,7 @@ require_relative 'process_options'
 require_relative 'select_players'
 
 #Monkey patching the CLI UI into the game.
-require_relative 'rack'
+require_relative 'cli_rack'
 
 module ConnectNGame
 
@@ -33,7 +33,24 @@ module ConnectNGame
 
     #Play the game
     def play_game
+      @game = Game.new(@players[0], @players[1], @order)
+      @game.game_initialize
 
+      begin
+        @game.rack.cli_display
+        result = @game.next_move
+        puts
+      end while result == :continue
+
+      @game.rack.cli_display
+
+      if result == :victory
+        puts "Player #{@game.current}, #{@game.current_player.name} wins!"
+      elsif result == :stalemate
+        puts "No winner, it's a tie!"
+      else
+        puts "Result is #{result}"
+      end
     end
 
     #The welcome message.
