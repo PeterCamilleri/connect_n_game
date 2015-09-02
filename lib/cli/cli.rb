@@ -3,6 +3,7 @@
 #The command line interface for the connect_n_game.
 
 require_relative 'process_options'
+require_relative 'select_players'
 
 module ConnectNGame
 
@@ -22,6 +23,7 @@ module ConnectNGame
       puts
 
       process_cmd_line
+      top_up_players
     end
 
   end

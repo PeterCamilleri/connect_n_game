@@ -25,7 +25,8 @@ module ConnectNGame
           fail "" if @players.length >= 2
 
           puts "Player ##{@players.length + 1} is #{arg}"
-          @players << find_player(arg)
+          fail "" unless (player = find_player(arg))
+          @players << player
         else
           fail ""
         end
@@ -47,26 +48,6 @@ module ConnectNGame
       puts
       puts "Supported players: "
       show_players
-    end
-
-    #Display the available players
-    def show_players
-      width = (Player.players.map do |player|
-        player.name.length
-      end).max
-
-      Player.players.each do |player|
-        puts "  #{player.name.ljust(width+1)}  #{player.description}"
-      end
-
-      puts
-    end
-
-    #Find the selected player.
-    def find_player(arg)
-      Player.players.find do |player|
-        player.name.downcase == arg.downcase
-      end
     end
 
   end
