@@ -1,10 +1,7 @@
 # coding: utf-8
-
 # Handle any command line arguments.
 
-
 require 'getoptlong'
-
 
 module ConnectNGame
 
@@ -45,8 +42,6 @@ module ConnectNGame
       puts "--help, -h, -?      -- Display this message and quit."
       puts "--player, -p <name> -- Select player or automaton 'name'"
       puts "                       Note: Limit of two players"
-      puts
-      puts "Supported players: "
       show_players
     end
 

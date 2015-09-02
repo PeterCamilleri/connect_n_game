@@ -1,5 +1,4 @@
 # coding: utf-8
-
 #Display and select player options.
 
 module ConnectNGame
@@ -21,8 +20,7 @@ module ConnectNGame
     def pick_a_player
       begin
         show_players
-        puts
-        print "Enter player #{@players.length+1} name: "
+        print "\nEnter player #{@players.length+1} name: "
         input = gets.chop
         player = find_player(input)
         puts "invalid entry #{input.inspect}" unless player
@@ -33,6 +31,9 @@ module ConnectNGame
 
     #Display the available players
     def show_players
+      puts
+      puts "Supported players: "
+
       width = (Player.players.map do |player|
         player.name.length
       end).max

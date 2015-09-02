@@ -1,5 +1,4 @@
 # coding: utf-8
-
 #The command line interface for the connect_n_game.
 
 require_relative 'process_options'
