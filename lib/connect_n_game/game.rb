@@ -68,6 +68,7 @@ module ConnectNGame
     #* :victory, :stalemate, :continue, or :invalid_move
     def next_move
       channel = current_player.make_move(self, current)
+#puts "Played #{channel.inspect}"
       score = rack.play_channel(channel, current)
       @log << channel
 
@@ -79,8 +80,8 @@ module ConnectNGame
         @current = (@current % 2) + 1
         :continue
       end
-    rescue
-      :invalid_move
+#    rescue => err
+#      :invalid_move
     end
 
   end

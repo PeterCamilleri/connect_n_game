@@ -6,6 +6,7 @@ require_relative 'select_players'
 
 #Monkey patching the CLI UI into the game.
 require_relative 'cli_rack'
+require_relative 'cli_human'
 
 module ConnectNGame
 

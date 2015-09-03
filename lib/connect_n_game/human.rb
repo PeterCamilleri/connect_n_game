@@ -2,7 +2,7 @@
 
 module ConnectNGame
 
-  #The JustRandom player simply make random moves.
+  #The Human player simply makes carbon based moves.
   class Human < Player
 
     #Build the player

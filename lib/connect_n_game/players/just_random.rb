@@ -10,7 +10,7 @@ module ConnectNGame
       super(name, "Moves randomly.", :silicon)
     end
 
-    #Make a move. This is dummy code for testing.
+    #Make a move. This bot moves randomly.
     #<br>Parameters
     #* game - the game being played.
     #* _piece - the piece to be played, 1 or 2. (Not used here)

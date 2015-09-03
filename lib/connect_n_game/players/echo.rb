@@ -10,7 +10,8 @@ module ConnectNGame
       super(name, "Really unoriginal.", :silicon)
     end
 
-    #Make a move. This is dummy code for testing.
+    #Make a move. This bot parrots the previous move when it can,
+    #and moves randomly when it cannot.
     #<br>Parameters
     #* game - the game being played.
     #* _piece - the piece to be played, 1 or 2. (Not used here)
