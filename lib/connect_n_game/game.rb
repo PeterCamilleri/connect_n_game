@@ -49,6 +49,10 @@ module ConnectNGame
       players[current]
     end
 
+    def previous_player
+      players[(@current % 2) + 1]
+    end
+
     #Get ready to start a game
     def game_initialize
       #Set up game play data.

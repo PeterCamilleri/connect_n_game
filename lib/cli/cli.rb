@@ -46,11 +46,16 @@ module ConnectNGame
 
       if result == :victory
         puts "Player #{@game.current}, #{@game.current_player.name} wins!"
+        puts
+        puts @game.current_player.winners_comments
+        puts @game.previous_player.losers_comments
       elsif result == :stalemate
         puts "No winner, it's a tie!"
       else
         puts "Result is #{result}"
       end
+
+      puts
     end
 
     #The welcome message.

@@ -10,6 +10,16 @@ module ConnectNGame
       super(name, "An actual player.", :carbon)
     end
 
+    #The thrill of victory.
+    def winners_comments
+      "Congratulations #{name}! You're our winner today!"
+    end
+
+    #The agony of defeat
+    def losers_comments
+      "Too bad #{name}, you lose. Hang your head in shame."
+    end
+
   end
 
   Player.players << Human.new("Bruce")
