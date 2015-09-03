@@ -23,6 +23,10 @@ module ConnectNGame
     end
 
     #Get a string of legal moves.
+    #<br>Parameters
+    #* rack - the playing area.
+    #<br>Returns
+    #* A string with all possible legal moves.
     def legal_moves(rack)
       legal = rack.channel_names.reject do |name|
         channel = name_to_channel(name)
@@ -33,6 +37,10 @@ module ConnectNGame
     end
 
     #Convert a channel name to its number.
+    #<br>Parameters
+    #* letter - the letter that was played.
+    #<br>Returns
+    #* The channel number (1..13) or nil if invalid.
     def name_to_channel(letter)
       %w(x A B C D E F G H I J K L M).find_index(letter[0].upcase)
     end
