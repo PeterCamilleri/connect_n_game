@@ -10,8 +10,7 @@ module ConnectNGame
       super(name, "Minimum tactical analysis.", :silicon)
     end
 
-    #Make a move. This bot parrots the previous move when it can,
-    #and moves randomly when it cannot.
+    #Make a move. This bot picks the move with the highest score.
     #<br>Parameters
     #* game - the game being played.
     #* piece - the piece to be played, 1 or 2.

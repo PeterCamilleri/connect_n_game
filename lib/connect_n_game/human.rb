@@ -10,6 +10,8 @@ module ConnectNGame
       super(name, "An actual player.", :carbon)
     end
 
+    #Move generation is part of the user interface.
+
     #The thrill of victory.
     def winners_comments
       "Congratulations #{name}! You're our winner today!"
