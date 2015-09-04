@@ -34,7 +34,7 @@ module ConnectNGame
 
     #The agony of defeat
     def losers_comments
-      "#{name} says 'Typical lunatic fringe playing I say!'"
+      "#{name} says 'Incredible! I lost to the lunatic fringe!'"
     end
 
   end
