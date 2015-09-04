@@ -57,16 +57,6 @@ module ConnectNGame
       piece
     end
 
-    #The thrill of victory.
-    def winners_comments
-      "#{name} says 'It was all up to pure skill!'"
-    end
-
-    #The agony of defeat
-    def losers_comments
-      "#{name} says 'No comment.'"
-    end
-
   end
 
 end
