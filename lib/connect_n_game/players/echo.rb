@@ -18,7 +18,7 @@ module ConnectNGame
     #<br>Returns
     #* A move, 1 .. rack.width
     def make_move(game, _piece)
-      channel = game.log[-1]
+      channel = game.last_move
 
       unless channel && !game.rack.channel_full?(channel)
         begin
@@ -31,12 +31,12 @@ module ConnectNGame
 
     #The thrill of victory.
     def winners_comments
-      "#{name} says 'When did I pass you?'"
+      "#{name} says 'How did this happen?'"
     end
 
     #The agony of defeat
     def losers_comments
-      "#{name} says 'Yes! I won silver!'"
+      "#{name} says 'Yes! I came in second!'"
     end
 
   end

@@ -17,12 +17,10 @@ module ConnectNGame
     #<br>Returns
     #* A move, 1 .. rack.width
     def make_move(game, _piece)
-      weights = []
-      game.rack.weights.each_with_index do |weight, index|
-        weights << [weight, index+1]
-      end
+      weights = game.rack.weights.each_with_index.to_a
 
-      weights.sort.reverse_each do |weight, channel|
+      weights.sort.reverse_each do |weight, index|
+        channel = index + 1
         return channel unless game.rack.channel_full?(channel)
       end
     end
@@ -34,7 +32,7 @@ module ConnectNGame
 
     #The agony of defeat
     def losers_comments
-      "#{name} says 'Incredible! I lost to the lunatic fringe!'"
+      "#{name} says 'I lost to the lunatic fringe!'"
     end
 
   end

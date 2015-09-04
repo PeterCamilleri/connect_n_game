@@ -3,9 +3,10 @@
 
 module ConnectNGame
 
+  #The output conversion hash
+  CLI_MAP = { nil => ' ', 1 => 'X', 2 => 'O'}
+
   class Rack
-    #The output conversion hash
-    CLI_MAP = { nil => ' ', 1 => 'X', 2 => 'O'}
 
     #Display the rack via a command line interface.
     def cli_display
