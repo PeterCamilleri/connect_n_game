@@ -21,7 +21,7 @@ module ConnectNGame
       begin
         show_players
         print "\nEnter player #{@players.length+1} name: "
-        input = gets.chop
+        input = gets.strip
         player = find_player(input)
         puts "invalid entry #{input.inspect}" unless player
       end until player
