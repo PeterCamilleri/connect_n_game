@@ -24,6 +24,7 @@ module ConnectNGame
 
   end
 
+  Player.players << Human.new
   Player.players << Human.new("Bruce")
   Player.players << Human.new("Sheila")
 end
