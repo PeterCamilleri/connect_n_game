@@ -47,7 +47,7 @@ module ConnectNGame
       type == :carbon
     end
 
-    #Make a move. This is dummy code for testing.
+    #Make a move. This is dummy code for testing only.
     #<br>Parameters
     #* _game - the game being played - not used here.
     #* piece - the piece to be played, 1 or 2.
