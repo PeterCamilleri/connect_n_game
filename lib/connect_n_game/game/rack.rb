@@ -112,7 +112,7 @@ module ConnectNGame
     #<br>Returns
     #* The score for that play 0 .. n
     def score_move(channel, piece)
-      return -1 if channel_full?(channel)
+      return -9 if channel_full?(channel)
 
       row = channel_to_row(channel)
 
@@ -181,6 +181,17 @@ module ConnectNGame
     #Is this a valid row?
     def valid_row?(row)
       (1..depth).include?(row)
+    end
+
+    #Clone the internal array.
+    def deep_clone
+      @rack = @rack.clone
+
+      (0...@width).each do |index|
+        @rack[index] = @rack[index].clone
+      end
+
+      self
     end
   end
 

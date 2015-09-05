@@ -38,12 +38,12 @@ module ConnectNGame
       @game.game_initialize
 
       begin
-        @game.rack.cli_display
+        current = @game.current
         result = @game.next_move
         puts
+        puts "Player #{current} plays channel #{@game.rack.channel_to_name(@game.last_move)}."
+        @game.rack.cli_display
       end while result == :continue
-
-      @game.rack.cli_display
 
       if result == :victory
         puts "Player #{@game.current}, #{@game.current_player.name} wins!"
