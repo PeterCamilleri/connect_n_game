@@ -142,7 +142,7 @@ class RackTester < Minitest::Test
 
     #Playing a full channel has no effect or score.
     assert_equal(6, tr.get_channel(1).length)
-    assert_equal(-1, tr.play_channel(1, 1))
+    assert_equal(-9, tr.play_channel(1, 1))
     assert_equal(6, tr.get_channel(1).length)
   end
 
