@@ -1,5 +1,6 @@
 # coding: utf-8
 
+require_relative 'connect_n_game/util'
 require_relative 'connect_n_game/exceptions'
 require_relative 'connect_n_game/game'
 require_relative 'connect_n_game/player'

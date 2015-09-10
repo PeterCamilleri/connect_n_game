@@ -21,9 +21,7 @@ module ConnectNGame
       first_ply = (game.rack.weights.each_with_index.map do |weight, index|
         channel = index + 1
         [weight + game.rack.score_move(channel, piece), channel]
-      end).sort
-
-      cli_debug_show_weights(first_ply, game.rack)
+      end).sort.show_weights("A+=")
 
       #If we're done, stop.
       return first_ply.last[1] if first_ply.last[0] >= game.rack.order
@@ -36,10 +34,7 @@ module ConnectNGame
         first_ply[index][0] -= check_ply(copy, (piece % 2) + 1)
       end
 
-      first_ply.sort!
-      cli_debug_show_weights(first_ply, game.rack)
-
-      first_ply.last[1]
+      first_ply.sort.show_weights("A-=").last[1]
     end
 
     #Check for the best moves at this level
@@ -62,14 +57,6 @@ module ConnectNGame
     #The agony of defeat
     def losers_comments
       "#{name} says 'How could I have missed this?'"
-    end
-
-    def cli_debug_show_weights(weights, rack)
-      weights.each do |weight|
-        print " #{rack.channel_to_name(weight[1])}#{"%5.1f " % weight[0]}"
-      end
-
-      puts
     end
 
   end

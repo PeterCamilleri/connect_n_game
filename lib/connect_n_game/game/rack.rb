@@ -155,24 +155,6 @@ module ConnectNGame
       channel_full?(channel) ? nil : rack[channel-1].length + 1
     end
 
-    #Convert a channel name to its number.
-    #<br>Parameters
-    #* letter - the letter that was played.
-    #<br>Returns
-    #* The channel number (1..13) or nil if invalid.
-    def name_to_channel(letter)
-      %w(x A B C D E F G H I J K L M).find_index(letter[0].upcase)
-    end
-
-    #Convert a channel number to its name.
-    #<br>Parameters
-    #* channel - the channel number (1..13),
-    #<br>Returns
-    #* The channel letter.
-    def channel_to_name(channel)
-      %w(x A B C D E F G H I J K L M)[channel]
-    end
-
     #Is this a valid channel?
     def valid_channel?(channel)
       (1..width).include?(channel)

@@ -16,7 +16,7 @@ module ConnectNGame
         legal = legal_moves(game.rack)
         puts "Player #{piece} select [#{legal}] "
         reply = gets[0].upcase
-        channel = game.rack.name_to_channel(reply)
+        channel = Utl.name_to_channel(reply)
       end until channel && legal.include?(reply)
 
       channel
@@ -29,7 +29,7 @@ module ConnectNGame
     #* A string with all possible legal moves.
     def legal_moves(rack)
       legal = rack.channel_names.reject do |name|
-        channel = rack.name_to_channel(name)
+        channel = Utl.name_to_channel(name)
         rack.channel_full?(channel)
       end
 

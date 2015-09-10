@@ -12,7 +12,8 @@ module ConnectNGame
 
       opts = GetoptLong.new(
         [ "--help",   "-h", "-?", GetoptLong::NO_ARGUMENT ],
-        [ "--player", "-p",       GetoptLong::REQUIRED_ARGUMENT ])
+        [ "--player", "-p",       GetoptLong::REQUIRED_ARGUMENT ],
+        [ "--debug",  "-d",       GetoptLong::NO_ARGUMENT ])
 
       # Translate the parsed options into fOOrth.
       opts.each do |opt, arg|
@@ -24,6 +25,9 @@ module ConnectNGame
           puts "Player ##{@players.length + 1} is #{arg}"
           fail "" unless (player = find_player(arg))
           @players << player
+        when "--debug"
+          puts "Debug mode is enabled."
+          $game_debug = true
         else
           fail ""
         end
@@ -42,6 +46,8 @@ module ConnectNGame
       puts "--help, -h, -?      -- Display this message and quit."
       puts "--player, -p <name> -- Select player or automaton 'name'"
       puts "                       Note: Limit of two players"
+      puts "--debug, -d         -- Display debug info."
+
       show_players
     end
 

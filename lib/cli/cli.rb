@@ -3,6 +3,7 @@
 
 require_relative 'process_options'
 require_relative 'select_players'
+require_relative 'cli_debug'
 
 #Monkey patching the CLI UI into the game.
 require_relative 'cli_rack'
@@ -39,9 +40,9 @@ module ConnectNGame
 
       begin
         current = @game.current
-        result = @game.next_move
         puts
-        puts "Player #{current} plays channel #{@game.rack.channel_to_name(@game.last_move)}."
+        result = @game.next_move
+        puts "Player #{current} plays channel #{Utl.channel_to_name(@game.last_move)}."
         @game.rack.cli_display
       end while result == :continue
 
