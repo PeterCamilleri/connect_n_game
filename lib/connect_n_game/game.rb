@@ -29,6 +29,9 @@ module ConnectNGame
     #The current player
     attr_reader :current
 
+    #The last played turn number.
+    attr_reader :turn
+
     #Create an instance of a \game object.
     #<br>Parameters
     #* player_ex - The player who moves first
@@ -56,6 +59,7 @@ module ConnectNGame
     #Get ready to start a game
     def game_initialize
       #Set up game play data.
+      @turn = 0
       @current = 1
       @rack = Rack.new(@game_size)
       @log  = []
@@ -70,6 +74,7 @@ module ConnectNGame
       channel = current_player.make_move(self, current)
       score = rack.play_channel(channel, current)
       @log << channel
+      @turn += 1
 
       if score >= rack.order
         :victory

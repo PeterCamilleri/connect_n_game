@@ -42,7 +42,9 @@ module ConnectNGame
         current = @game.current
         puts
         result = @game.next_move
-        puts "Player #{current} plays channel #{Utl.channel_to_name(@game.last_move)}."
+        puts "On turn ##{@game.turn}, " +
+             "player #{current} " +
+             "plays channel #{Utl.channel_to_name(@game.last_move)}."
         @game.rack.cli_display
       end while result == :continue
 

@@ -22,24 +22,31 @@ class GameTester < Minitest::Test
     assert_equal(4, game.rack.order)
     assert_equal(pl1, game.current_player)
     assert_equal(:continue, game.next_move)
+    assert_equal(1, game.turn)
 
     assert_equal(pl2, game.current_player)
     assert_equal(:continue, game.next_move)
+    assert_equal(2, game.turn)
 
     assert_equal(pl1, game.current_player)
     assert_equal(:continue, game.next_move)
+    assert_equal(3, game.turn)
 
     assert_equal(pl2, game.current_player)
     assert_equal(:continue, game.next_move)
+    assert_equal(4, game.turn)
 
     assert_equal(pl1, game.current_player)
     assert_equal(:continue, game.next_move)
+    assert_equal(5, game.turn)
 
     assert_equal(pl2, game.current_player)
     assert_equal(:continue, game.next_move)
+    assert_equal(6, game.turn)
 
     assert_equal(pl1, game.current_player)
     assert_equal(:victory, game.next_move)
+    assert_equal(7, game.turn)
   end
 
 
