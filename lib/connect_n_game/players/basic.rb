@@ -20,7 +20,7 @@ module ConnectNGame
       (game.rack.weights.each_with_index.map do |weight, index|
         channel = index + 1
         [weight + game.rack.score_move(channel, piece), channel]
-      end).sort.show_weights("+|").last[1]
+      end).sort.show_weights("Scan").last[1]
     end
 
     #The thrill of victory.
