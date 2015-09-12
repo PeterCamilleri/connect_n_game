@@ -17,16 +17,13 @@ module ConnectNGame
     #The \game playing surface
     attr_reader :rack
 
-    #The user interface
-    attr_reader :ui
-
     #Whose playing?
     attr_reader :players
 
-    #The play log
+    #The play log.
     attr_reader :log
 
-    #The current player
+    #The current player number.
     attr_reader :current
 
     #The last played turn number.
