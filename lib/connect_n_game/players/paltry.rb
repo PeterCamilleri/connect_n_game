@@ -39,11 +39,12 @@ module ConnectNGame
 
     #Check for the opponent's best moves at this level
     def check_opponent(rack, piece)
+      threshold = rack.order - 1
       result = 0
 
       (1..rack.width).each do |channel|
         score = rack.score_move(channel, piece)
-        result = score if result < score
+        result += score if score >= threshold
       end
 
       result
