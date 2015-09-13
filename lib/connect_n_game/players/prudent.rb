@@ -3,11 +3,11 @@
 module ConnectNGame
 
   #The EchoMoves echoes moves when possible.
-  class PaltryImprovement < Player
+  class Prudent < Player
 
     #Build the player
-    def initialize(name = "Paltry")
-      super(name, "Tactical analysis with a minor improvement.", :silicon)
+    def initialize(name = "Prudent")
+      super(name, "Minimum tactical analysis with some defense.", :silicon)
     end
 
     #Make a move. This bot picks the move with the highest score.
@@ -62,5 +62,5 @@ module ConnectNGame
 
   end
 
-  Player.players << PaltryImprovement.new
+  Player.players << Prudent.new
 end
