@@ -21,7 +21,7 @@ module ConnectNGame
       first_ply = (game.rack.weights.each_with_index.map do |weight, index|
         channel = index + 1
         [weight + game.rack.score_move(channel, piece), channel]
-      end).sort.show_weights("+Scan")
+      end).sort.show_weights("Scan 1")
 
       #If we're done, stop.
       return first_ply.last[1] if first_ply.last[0] >= game.rack.order
@@ -34,7 +34,7 @@ module ConnectNGame
         first_ply[index][0] -= check_opponent(copy, (piece % 2) + 1)
       end
 
-      first_ply.sort.show_weights("-Scan").last[1]
+      first_ply.sort.show_weights("Scan 2").last[1]
     end
 
     #Check for the opponent's best moves at this level
