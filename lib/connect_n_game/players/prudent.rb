@@ -44,6 +44,7 @@ module ConnectNGame
 
       (1..rack.width).each do |channel|
         score = rack.score_move(channel, piece)
+        score *= 2 if score > threshold
         result += score if score >= threshold
       end
 
