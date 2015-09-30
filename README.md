@@ -42,7 +42,27 @@ To get help simply enter:
 
 The available options are:
 
-{W.I.P.}
+Welcome to the Connect N Command Line Interface.
+This is game version: 0.0.1.
+
+
+Usage info: connect_n_game <options>
+
+--help, -h, -?      -- Display this message and quit.
+--player, -p <name> -- Select player or automaton 'name'
+                       Note: Limit of two players
+--order, -o <4..8>  -- The winning run length. Default=4
+--debug, -d         -- Display debug info.
+
+Player Selection:
+  Basic     Minimum tactical analysis.
+  Bruce     An actual player.
+  Echo      Really unoriginal.
+  Human     An actual player.
+  Middle    Moves toward the middle
+  Prudent   Minimum tactical analysis with some defense.
+  Random    Moves randomly.
+  Sheila    An actual player.
 
 ## Contributing
 
