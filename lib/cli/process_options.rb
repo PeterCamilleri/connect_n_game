@@ -21,10 +21,10 @@ module ConnectNGame
 
         case opt
         when "--player"
-          fail "" if @players.length >= 2
+          fail "Error: Too many players!" if @players.length >= 2
 
           puts "Player ##{@players.length + 1} is #{arg}"
-          fail "" unless (player = find_player(arg))
+          fail "Error: Unknown player: #{arg}" unless (player = find_player(arg))
           @players << player
         when "--order"
           @order = arg.to_i
