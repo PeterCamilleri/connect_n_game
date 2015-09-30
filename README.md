@@ -45,7 +45,7 @@ The available options are:
 Welcome to the Connect N Command Line Interface.
 This is game version: 0.0.1.
 
-
+```
 Usage info: connect_n_game <options>
 
 --help, -h, -?      -- Display this message and quit.
@@ -63,6 +63,7 @@ Player Selection:
   Prudent   Minimum tactical analysis with some defense.
   Random    Moves randomly.
   Sheila    An actual player.
+```
 
 ## Contributing
 
