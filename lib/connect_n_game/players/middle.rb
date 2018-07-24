@@ -2,7 +2,7 @@
 
 module ConnectNGame
 
-  #The EchoMoves echoes moves when possible.
+  #The Middle bot prefers to play the middle.
   class MiddleMoves < Player
 
     #Build the player

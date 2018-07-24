@@ -2,7 +2,7 @@
 
 module ConnectNGame
 
-  #The EchoMoves echoes moves when possible.
+  #The Basic bot just picks the move with the highest score.
   class BasicMoves < Player
 
     #Build the player

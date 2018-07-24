@@ -2,7 +2,7 @@
 
 module ConnectNGame
 
-  #The EchoMoves echoes moves when possible.
+  #The Prudent bot picks the move with the highest score.
   class Prudent < Player
 
     #Build the player
