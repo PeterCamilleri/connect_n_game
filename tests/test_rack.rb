@@ -109,19 +109,19 @@ class RackTester < Minitest::Test
   #Test that we can query individual cells
   def test_get_cell
     tr = ConnectNGame::Rack.new(4)
-    assert_equal(nil, tr.get_cell(1,1))
-    assert_equal(nil, tr.get_cell(1,2))
-    assert_equal(nil, tr.get_cell(1,3))
+    assert_nil(tr.get_cell(1,1))
+    assert_nil(tr.get_cell(1,2))
+    assert_nil(tr.get_cell(1,3))
 
     tr.get_channel(1) << 1
     assert_equal(1, tr.get_cell(1,1))
-    assert_equal(nil, tr.get_cell(1,2))
-    assert_equal(nil, tr.get_cell(1,3))
+    assert_nil(tr.get_cell(1,2))
+    assert_nil(tr.get_cell(1,3))
 
     tr.get_channel(1) << 2
     assert_equal(1, tr.get_cell(1,1))
     assert_equal(2, tr.get_cell(1,2))
-    assert_equal(nil, tr.get_cell(1,3))
+    assert_nil(tr.get_cell(1,3))
 
     tr.get_channel(1) << 1
     assert_equal(1, tr.get_cell(1,1))
@@ -168,7 +168,7 @@ class RackTester < Minitest::Test
     assert_equal(6, tr.channel_to_row(1))
 
     tr.play_channel(1,1)
-    assert_equal(nil, tr.channel_to_row(1))
+    assert_nil(tr.channel_to_row(1))
   end
 
   #Test that we can count cells around a position.
