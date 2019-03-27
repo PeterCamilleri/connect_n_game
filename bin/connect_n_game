@@ -3,14 +3,7 @@
 
 #Run the Connect N Game from the command line.
 
-unless defined?(ConnectNGame)
-  begin
-    require 'connect_n_game'
-  rescue LoadError
-    require_relative '../lib/connect_n_game'
-  end
-end
-
+require_relative '../lib/connect_n_game'
 require_relative '../lib/cli/cli'
 
 ConnectNGame::CLI.new.main

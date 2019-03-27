@@ -32,10 +32,12 @@ module ConnectNGame
         when "--debug"
           puts "Debug mode is enabled."
           $game_debug = true
-        else
+        when "--help"
           fail ""
         end
       end
+
+    fail "Invalid args #{ARGV.join(" ")}" unless ARGV.empty?
 
     rescue => err
       puts err.message
